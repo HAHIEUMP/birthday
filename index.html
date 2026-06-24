@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Chế ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.7/dist/index.umd.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#000;
+overflow:hidden;
+color:white;
+}
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.page{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:30px;
+text-align:center;
+opacity:0;
+transition:1.5s;
+z-index:10;
+}
+
+.active{
+opacity:1;
+}
+
+h1{
+font-size:4rem;
+text-shadow:
+0 0 10px #ff69b4,
+0 0 30px #ff69b4,
+0 0 60px #ff69b4;
+}
+
+h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.3rem;
+line-height:1.8;
+max-width:800px;
+}
+
+#countdown{
+font-size:5rem;
+font-weight:bold;
+text-shadow:
+0 0 20px #fff,
+0 0 40px #ff69b4;
+}
+
+.photo{
+width:250px;
+height:350px;
+border-radius:20px;
+object-fit:cover;
+margin-bottom:20px;
+box-shadow:
+0 0 20px #ff69b4,
+0 0 50px #ff69b4;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:25px;
+animation:float 6s linear;
+z-index:999;
+}
+
+@keyframes float{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+
+#fireworks{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:50;
+pointer-events:none;
+}
+
+.glow{
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:
+0 0 10px #fff,
+0 0 20px #ff69b4;
+}
+to{
+text-shadow:
+0 0 20px #fff,
+0 0 50px #ff69b4,
+0 0 80px #ff69b4;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div id="fireworks"></div>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page active">
+<div id="countdown">23:59:52</div>
+<br>
+<h2>Chuẩn bị đón sinh nhật Chế ❤️</h2>
+</div>
+
+<div class="page">
+<h1>🎂</h1>
+<h2>25 THÁNG 06 NĂM 2026</h2>
+<h1 class="glow">HAPPY BIRTHDAY TO MY SISTER</h1>
+</div>
+
+<div class="page">
+<img src="photo1.jpg" class="photo">
+<p>
+Cảm ơn Chế vì đã luôn yêu thương và bên cạnh đứa em nhỏ này.<br><br>
+Những lúc em vui, Chế ở đó.<br>
+Những lúc em buồn, Chế cũng ở đó.
+</p>
+</div>
+
+<div class="page">
+<img src="photo2.jpg" class="photo">
+<p>
+Cảm ơn những lần Chế lắng nghe.<br>
+Cảm ơn những lần Chế động viên.<br>
+Cảm ơn vì dù có chuyện gì xảy ra,<br>
+Chế vẫn luôn là gia đình của em.
+</p>
+</div>
+
+<div class="page">
+<img src="photo3.jpg" class="photo">
+<p>
+Chúc Chế tuổi mới thật nhiều sức khỏe.<br>
+Chúc mọi điều tốt đẹp sẽ đến.<br>
+Chúc những ước mơ đều thành hiện thực.<br>
+Chúc Chế luôn hạnh phúc và bình an.
+</p>
+</div>
+
+<div class="page">
+<img src="photo4.jpg" class="photo">
+<p>
+Nếu cuộc đời là một hành trình,<br><br>
+Thì việc được làm em của Chế<br>
+là một trong những điều may mắn nhất của em.
+</p>
+</div>
+
+<div class="page">
+<p>
+Có những người xuất hiện trong cuộc đời như một món quà.<br><br>
+
+Với em,<br><br>
+
+Chế chính là món quà đẹp nhất mà cuộc sống đã gửi đến.
+
+</p>
+</div>
+
+<div class="page">
+<h1>I LOVE YOU ❤️</h1>
+
+<br>
+
+<h2>LOVE YOU FOREVER</h2>
+
+<br>
+
+<h2>25.06.2026</h2>
+</div>
+
+<script>
+
+const pages=document.querySelectorAll('.page');
+let currentPage=0;
+
+function nextPage(){
+
+pages[currentPage].classList.remove('active');
+
+currentPage++;
+
+if(currentPage<pages.length){
+
+pages[currentPage].classList.add('active');
+
+}
+
+}
+
+setInterval(()=>{
+
+if(currentPage>0){
+nextPage();
+}
+
+},8000);
+
+let sec=52;
+
+const countdown=document.getElementById("countdown");
+
+const timer=setInterval(()=>{
+
+countdown.innerHTML=
+"23:59:"+String(sec).padStart(2,"0");
+
+sec++;
+
+if(sec>59){
+
+clearInterval(timer);
+
+countdown.innerHTML="00:00:00";
+
+launchFireworks();
+
+nextPage();
+
+}
+
+},1000);
+
+function launchFireworks(){
+
+const container=document.getElementById('fireworks');
+
+const fireworks=new Fireworks.default(container,{
+rocketsPoint:{min:50,max:50},
+hue:{min:0,max:360},
+delay:{min:15,max:30},
+speed:3
+});
+
+fireworks.start();
+
+setTimeout(()=>{
+fireworks.stop();
+},8000);
+
+}
+
+function createHeart(){
+
+const heart=document.createElement('div');
+
+heart.className='heart';
+
+heart.innerHTML='❤️';
+
+heart.style.left=Math.random()*100+'vw';
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,300);
+
+const canvas=document.getElementById('matrix');
+const ctx=canvas.getContext('2d');
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters=
+'Happy Birthday Chế ❤️ Love You Forever ❤️ ';
+
+const fontSize=16;
+
+const columns=canvas.width/fontSize;
+
+const drops=[];
+
+for(let i=0;i<columns;i++){
+drops[i]=1;
+}
+
+function draw(){
+
+ctx.fillStyle='rgba(0,0,0,0.08)';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle='#ff69b4';
+
+ctx.font=fontSize+'px monospace';
+
+for(let i=0;i<drops.length;i++){
+
+const text=
+letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(
+text,
+i*fontSize,
+drops[i]*fontSize
+);
+
+if(
+drops[i]*fontSize>
+canvas.height
+&&
+Math.random()>0.975
+){
+drops[i]=0;
+}
+
+drops[i]++;
+}
+
+}
+
+setInterval(draw,35);
+
+</script>
+
+</body>
+</html>
